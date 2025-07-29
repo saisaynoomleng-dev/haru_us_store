@@ -114,14 +114,15 @@
 
 @theme {
   /* colors */
-  --color-primary-100: #f2cedb;
-  --color-primary-200: #bf808c;
-  --color-accent-100: #d9a796;
+  --color-primary-100: #ffb3b3;
+  --color-primary-200: #ee7d7b;
+  --color-accent: #d9a796;
   --color-light: #f2f2f2;
   --color-dark: #262626;
 
   /* fonts */
   --font-objectivity: var(--font-objectivity);
+  --font-jost: var(--font-jost);
 
   --text-fs-900: 4.5rem;
   --text-fs-800: 3.75rem;

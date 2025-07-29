@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { Objectivity } from '@/lib/fonts';
+import { Jost, Objectivity } from '@/lib/fonts';
 
 export const metadata: Metadata = {
   title: {
@@ -18,7 +18,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${Objectivity.variable} antialiased`}>{children}</body>
+      <body className={`${Objectivity.variable} ${Jost.variable} antialiased`}>
+        {children}
+      </body>
     </html>
   );
 }
