@@ -1,3 +1,4 @@
+import { CiDollar } from 'react-icons/ci';
 import { IoIosColorPalette } from 'react-icons/io';
 import { IoTicketOutline } from 'react-icons/io5';
 import { LuShirt } from 'react-icons/lu';
@@ -10,6 +11,9 @@ export const structure: StructureResolver = (S) =>
   S.list()
     .title('Haru U.S Store')
     .items([
+      S.divider().title('Management'),
+      S.documentTypeListItem('income').title('All Income').icon(CiDollar),
+
       S.divider().title('Products'),
       S.documentTypeListItem('product').title('Products').icon(LuShirt),
       S.documentTypeListItem('category').title('Categories').icon(MdCategory),
