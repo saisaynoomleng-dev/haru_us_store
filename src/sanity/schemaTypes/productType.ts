@@ -68,6 +68,12 @@ export const productType = defineType({
       group: 'details',
     }),
     defineField({
+      name: 'isFeatured',
+      title: 'Feature Product',
+      type: 'boolean',
+      initialValue: false,
+    }),
+    defineField({
       name: 'mainImages',
       title: 'Product Photos',
       type: 'array',
@@ -114,7 +120,7 @@ export const productType = defineType({
     prepare({ name, category, image, price }) {
       return {
         title: name,
-        subtitle: `${category} | ${price.toLocaleString()} MMK `,
+        subtitle: `${category} | ${price && price.toLocaleString()} MMK `,
         media: image || LuShirt,
       };
     },
