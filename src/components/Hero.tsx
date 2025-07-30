@@ -82,7 +82,7 @@ const Hero = () => {
         }}
       >
         <div className="flex flex-col justify-center p-3 md:p-8">
-          <Title size="sm" className="!text-fs-300 capitalize">
+          <Title size="sm" className="!text-fs-300 capitalize font-jost">
             {currentComponent?.title}
           </Title>
           <Link href={`/products?category=${currentComponent?.linkURL}`}>
