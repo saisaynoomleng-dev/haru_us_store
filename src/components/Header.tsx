@@ -18,7 +18,7 @@ const Header = () => {
             width={80}
             height={80}
             alt="haru u.s store logo"
-            className=""
+            className="max-w-[50px] md:max-w-[80px]"
           />
         </Link>
       </div>
@@ -29,16 +29,13 @@ const Header = () => {
         className="flex gap-x-4 items-center justify-end col-start-2 col-end-3 md:col-start-3 md:col-end-4"
       >
         <Link href="/favorite" className="text-primary-200">
-          <IoHeart className="size-7 md:size-6 lg:size-7" />
+          <IoHeart className="size-5 md:size-6 lg:size-7" />
         </Link>
         <Link href="/cart" className="text-primary-200">
-          <IoCart className="size-7 md:size-6 lg:size-7" />
+          <IoCart className="size-5 md:size-6 lg:size-7" />
         </Link>
         <Link href="/sign-up" className="text-primary-200">
-          <IoPerson className="size-7 md:size-6 lg:size-7" />
-        </Link>
-        <Link href="/products">
-          <Button className="bg-primary-200 text-light">Order Now</Button>
+          <IoPerson className="size-5 md:size-6 lg:size-7" />
         </Link>
       </nav>
 
