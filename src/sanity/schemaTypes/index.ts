@@ -6,6 +6,9 @@ import { colorType } from './colorType';
 import { blockContentType } from './blockContentType';
 import { cuponType } from './cuponType';
 import { incomeType } from './incomeType';
+import { faqType } from './faqType';
+import { contactType } from './contactType';
+import { subscriptionType } from './subscriptionType';
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -16,5 +19,8 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     blockContentType,
     cuponType,
     incomeType,
+    faqType,
+    contactType,
+    subscriptionType,
   ],
 };

@@ -152,3 +152,12 @@
     @apply text-pretty;
   }
 }
+
+.hide-scroll-container {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.hide-scroll-container::-webkit-scrollbar {
+  display: none;
+}
