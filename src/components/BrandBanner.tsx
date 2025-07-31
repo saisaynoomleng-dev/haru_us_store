@@ -9,7 +9,7 @@ const BrandBanner = async () => {
   if (!brands) return null;
 
   return (
-    <div className="flex overflow-hidden h-[100px]">
+    <div className="flex overflow-hidden h-[100px] ">
       {brands.map((brand) => (
         <Image
           key={brand.name}

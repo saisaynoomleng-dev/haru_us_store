@@ -1,8 +1,9 @@
+import { AiFillQuestionCircle } from 'react-icons/ai';
 import { CiDollar } from 'react-icons/ci';
 import { IoIosColorPalette } from 'react-icons/io';
 import { IoTicketOutline } from 'react-icons/io5';
 import { LuShirt } from 'react-icons/lu';
-import { MdCategory } from 'react-icons/md';
+import { MdCategory, MdEmail, MdSubscriptions } from 'react-icons/md';
 import { SiNike } from 'react-icons/si';
 import type { StructureResolver } from 'sanity/structure';
 
@@ -13,6 +14,11 @@ export const structure: StructureResolver = (S) =>
     .items([
       S.divider().title('Management'),
       S.documentTypeListItem('income').title('All Income').icon(CiDollar),
+      S.documentTypeListItem('faq').title('FAQs').icon(AiFillQuestionCircle),
+      S.documentTypeListItem('contact').title('Contacts').icon(MdEmail),
+      S.documentTypeListItem('subscription')
+        .title('Subscriptions')
+        .icon(MdSubscriptions),
 
       S.divider().title('Products'),
       S.documentTypeListItem('product').title('Products').icon(LuShirt),

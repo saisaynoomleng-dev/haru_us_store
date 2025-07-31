@@ -13,7 +13,8 @@ export const PRODUCTS_QUERY = defineQuery(`
         'image': {
             'urls': mainImages[].asset->url,
             'alts': mainImages[].alt
-        }
+        },
+        isFeatured
     }
 `);
 
@@ -33,3 +34,13 @@ export const CATEGORIES_QUERY = defineQuery(`
         slug
     }
     `);
+
+export const FAQS_QUERY = defineQuery(`
+    *[_type == 'faq'
+    && defined(slug.current)]{
+        list[]{
+            question,
+            answer
+        }
+    }
+ `);

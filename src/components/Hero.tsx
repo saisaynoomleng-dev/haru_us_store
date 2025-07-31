@@ -86,7 +86,7 @@ const Hero = () => {
             {currentComponent?.title}
           </Title>
           <Link href={`/products?category=${currentComponent?.linkURL}`}>
-            <Button variant="link" className="flex">
+            <Button variant="link" className="flex items-center cursor-pointer">
               <span>Shop Now</span>
               <MdArrowOutward />
             </Button>

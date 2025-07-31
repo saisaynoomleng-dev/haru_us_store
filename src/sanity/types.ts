@@ -13,6 +13,21 @@
  */
 
 // Source: schema.json
+export type Faq = {
+  _id: string;
+  _type: 'faq';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  slug?: Slug;
+  list?: Array<{
+    question?: string;
+    answer?: string;
+    _key: string;
+  }>;
+};
+
 export type Income = {
   _id: string;
   _type: 'income';
@@ -102,6 +117,7 @@ export type Product = {
     [internalGroqTypeReferenceTo]?: 'category';
   };
   dateAdded?: string;
+  isFeatured?: boolean;
   mainImages?: Array<{
     asset?: {
       _ref: string;
@@ -272,6 +288,7 @@ export type SanityAssetSourceData = {
 };
 
 export type AllSanitySchemaTypes =
+  | Faq
   | Income
   | Cupon
   | BlockContent
@@ -293,7 +310,7 @@ export type AllSanitySchemaTypes =
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: PRODUCTS_QUERY
-// Query: *[_type == 'product'    && defined(slug.current)]    |order(dateAdded desc){        name,        slug,        price,        desc,        'category': category->{name},        "brand": brand->{name},        'image': {            'urls': mainImages[].asset->url,            'alts': mainImages[].alt        }    }
+// Query: *[_type == 'product'    && defined(slug.current)]    |order(dateAdded desc){        name,        slug,        price,        desc,        'category': category->{name},        "brand": brand->{name},        'image': {            'urls': mainImages[].asset->url,            'alts': mainImages[].alt        },        isFeatured    }
 export type PRODUCTS_QUERYResult = Array<{
   name: string | null;
   slug: Slug | null;
@@ -309,6 +326,7 @@ export type PRODUCTS_QUERYResult = Array<{
     urls: Array<string | null> | null;
     alts: Array<string | null> | null;
   };
+  isFeatured: boolean | null;
 }>;
 // Variable: BRANDS_QUERY
 // Query: *[_type == 'brand'    && defined(slug.current)]{        name,        'imageURL': mainImage.asset->{url},        'imageALT': mainImage.alt        }
@@ -325,13 +343,22 @@ export type CATEGORIES_QUERYResult = Array<{
   name: string | null;
   slug: Slug | null;
 }>;
+// Variable: FAQS_QUERY
+// Query: *[_type == 'faq'    && defined(slug.current)]{        list[]{            question,            answer        }    }
+export type FAQS_QUERYResult = Array<{
+  list: Array<{
+    question: string | null;
+    answer: string | null;
+  }> | null;
+}>;
 
 // Query TypeMap
 import '@sanity/client';
 declare module '@sanity/client' {
   interface SanityQueries {
-    "\n    *[_type == 'product'\n    && defined(slug.current)]\n    |order(dateAdded desc){\n        name,\n        slug,\n        price,\n        desc,\n        'category': category->{name},\n        \"brand\": brand->{name},\n        'image': {\n            'urls': mainImages[].asset->url,\n            'alts': mainImages[].alt\n        }\n    }\n": PRODUCTS_QUERYResult;
+    "\n    *[_type == 'product'\n    && defined(slug.current)]\n    |order(dateAdded desc){\n        name,\n        slug,\n        price,\n        desc,\n        'category': category->{name},\n        \"brand\": brand->{name},\n        'image': {\n            'urls': mainImages[].asset->url,\n            'alts': mainImages[].alt\n        },\n        isFeatured\n    }\n": PRODUCTS_QUERYResult;
     "\n    *[_type == 'brand'\n    && defined(slug.current)]{\n        name,\n        'imageURL': mainImage.asset->{url},\n        'imageALT': mainImage.alt\n        }": BRANDS_QUERYResult;
     "\n    *[_type == 'category'\n    && defined(slug.current)]\n    |order(name asc){\n        name,\n        slug\n    }\n    ": CATEGORIES_QUERYResult;
+    "\n    *[_type == 'faq'\n    && defined(slug.current)]{\n        list[]{\n            question,\n            answer\n        }\n    }\n ": FAQS_QUERYResult;
   }
 }
